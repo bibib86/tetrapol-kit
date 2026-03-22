@@ -9,6 +9,7 @@ add_library (tetrapol
     bch.c
     bit_utils.c
     data_block.c
+    decoder.c
     data_frame.c
     hdlc_frame.c
     log.c
@@ -24,6 +25,7 @@ add_library (tetrapol
     tetrapol/bch.h
     tetrapol/bit_utils.h
     tetrapol/data_block.h
+    tetrapol/decoder.h
     tetrapol/data_frame.h
     tetrapol/hdlc_frame.h
     tetrapol/log.h
@@ -38,6 +40,7 @@ add_library (tetrapol
     tetrapol/tsdu.h
 )
 
+if (CMOCKA_LIBRARY)
 add_executable (test_data_block
     log.c
     test_data_block.c)
@@ -81,3 +84,8 @@ add_test(test_data_frame ${CMAKE_CURRENT_BINARY_DIR}/test_data_frame)
 add_test(test_bit_utils ${CMAKE_CURRENT_BINARY_DIR}/test_bit_utils)
 add_test(test_phys_ch ${CMAKE_CURRENT_BINARY_DIR}/test_phys_ch)
 add_test(test_timer ${CMAKE_CURRENT_BINARY_DIR}/test_timer)
+endif ()
+
+if (WIN32 AND BUILD_SHARED_LIBS)
+    target_compile_definitions (tetrapol PRIVATE TETRAPOL_BUILD_DLL PUBLIC TETRAPOL_SHARED)
+endif ()
