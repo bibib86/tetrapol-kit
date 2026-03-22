@@ -12,3 +12,8 @@ features wich are not planned are:
   - Tx of signals
   - killing cats
 
+
+
+Additional integration shipped in this repository:
+  - native high-level streaming decoder API for external front-ends
+  - SDRSharp / SDR# plugin sample in plugins/sdrsharp-tetrapol
